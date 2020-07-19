@@ -1,0 +1,132 @@
+[{
+        "_id": {
+            "$oid": "5f12d94134bfeb436df57730"
+        },
+        "name": "Beleghata ID",
+        "location": {
+            "addressLine": "57, Beleghata Main Rd, Subhas Sarobar Park, Phool Bagan",
+            "district": "Kolkata",
+            "state": "West Bengal",
+            "country": "Indian",
+            "pinCode": {
+                "$numberInt": "700056"
+            }
+        },
+        "totalBedCapacity": {
+            "$numberInt": "380"
+        },
+        "currentBedUsage": {
+            "$numberInt": "210"
+        },
+        "_class": "org.social.it.entity.HospitalEntity"
+    }, {
+        "_id": {
+            "$oid": "5f12d94134bfeb436df57731"
+        },
+        "name": "SSKM Medical College & Hospital",
+        "location": {
+            "addressLine": "244, Acharya Jagadish Chandra Bose Rd, Bhowanipore, Kolkata, West Bengal",
+            "district": "Kolkata",
+            "state": "West Bengal",
+            "country": "India",
+            "pinCode": {
+                "$numberInt": "700020"
+            }
+        },
+        "totalBedCapacity": {
+            "$numberInt": "380"
+        },
+        "currentBedUsage": {
+            "$numberInt": "210"
+        },
+        "_class": "org.social.it.entity.HospitalEntity"
+    },
+    {
+        "_id": {
+            "$oid": "5f12d94134bfeb436df57732"
+        },
+        "name": "Kolkata Medical College & Hospital",
+        "location": {
+            "addressLine": " 88, College St, Calcutta Medical College, College Square, Kolkata, West Bengal ",
+            "district": "Kolkata",
+            "state": "West Bengal",
+            "country": "Indian",
+            "pinCode": {
+                "$numberInt": "700073"
+            }
+        },
+        "totalBedCapacity": {
+            "$numberInt": "380"
+        },
+        "currentBedUsage": {
+            "$numberInt": "210"
+        },
+        "_class": "org.social.it.entity.HospitalEntity"
+    },
+    {
+        "_id": {
+            "$oid": "5f12d94134bfeb436df57733"
+        },
+        "name": "N.R.S. Medical College & Hospital",
+        "location": {
+            "addressLine": "138, Acharya Jagadish Chandra Bose Rd, near Railway Station, Sealdah, Raja Bazar, Kolkata, West Bengal ",
+            "district": "Kolkata",
+            "state": "West Bengal",
+            "country": "Indian",
+            "pinCode": {
+                "$numberInt": "700014"
+            }
+        },
+        "totalBedCapacity": {
+            "$numberInt": "380"
+        },
+        "currentBedUsage": {
+            "$numberInt": "210"
+        },
+        "_class": "org.social.it.entity.HospitalEntity"
+    },
+    {
+        "_id": {
+            "$oid": "5f12d94134bfeb436df57734"
+        },
+        "name": "National Medical College & Hospital",
+        "location": {
+            "addressLine": "32, Gorachand Rd, Beniapukur, Kolkata, West Bengal ",
+            "district": "Kolkata",
+            "state": "West Bengal",
+            "country": "Indian",
+            "pinCode": {
+                "$numberInt": "700014"
+            }
+        },
+        "totalBedCapacity": {
+            "$numberInt": "380"
+        },
+        "currentBedUsage": {
+            "$numberInt": "210"
+        },
+        "_class": "org.social.it.entity.HospitalEntity"
+    },
+    {
+        "_id": {
+            "$oid": "5f12d94134bfeb436df57735"
+        },
+        "name": "R.G.Kar Medical College & Hospital",
+        "location": {
+            "addressLine": "1, Khudiram Bose Sarani, Bidhan Sarani, Shyam Bazar, Kolkata, West Bengal",
+            "district": "Kolkata",
+            "state": "West Bengal",
+            "country": "Indian",
+            "pinCode": {
+                "$numberInt": "700004"
+            }
+        },
+        "totalBedCapacity": {
+            "$numberInt": "380"
+        },
+        "currentBedUsage": {
+            "$numberInt": "210"
+        },
+        "_class": "org.social.it.entity.HospitalEntity"
+    }
+]
