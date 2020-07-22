@@ -59,6 +59,8 @@ tr.element-row:not(.expanded-row):active {
     font-family: 'Gayathri', sans-serif;
     font-size: 20px;
     text-align: center;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 }
 
 mat-form-field {
