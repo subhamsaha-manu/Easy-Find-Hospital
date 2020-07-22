@@ -51,6 +51,8 @@ tr.element-row:not(.expanded-row):active {
     font-family: 'Bitter', serif;
     font-size: 20px !important;
     text-align: center;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
 }
 
 .mat-cell {
@@ -104,6 +106,8 @@ mat-form-field {
   .table-container {
     max-height: calc(100vh - 155px);
     overflow: auto;
+    margin-left: -1em;
+    margin-right: -1em;
     }
 
     .footer {
@@ -124,11 +128,11 @@ mat-form-field {
     .searchbar{
         width:300px;
         letter-spacing: 0.208em;
-        font-size: 20px;
+        font-size: 15px;
       } 
     .mat-header-cell {
         font-family: 'Bitter', serif;
-        font-size: 13px !important;
+        font-size: 11px !important;
     }
     
     .mat-cell {
