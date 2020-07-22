@@ -1,67 +1,68 @@
-<div class="containerDiv" fxFill fxLayout="column" fxLayoutAlign=" center center">
-    <div class="mat-elevation-z8 searchBox" fxLayoutGap="20px">
-        <mat-form-field appearance="outline">
-            <!-- <div class="icon">
-                <span class="iconify" data-icon="carbon:search" data-inline="false" data-width="30px" data-height="30px"></span>
-            </div> -->
-            <mat-label>Hospital Name/Locality</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Hospital Name/Locality" #input>
-            <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
+<div class="containerDiv" fxFill fxLayout="column" fxLayoutGap="20px" fxLayout.xs="column" fxLayoutGap.xs="20px">
+    <div class="mat-elevation-z8 bar" fxFlexOffset="20px" fxFlexOffset.xs="20px">
+        <input class="searchbar" type="text" title="Search" (keyup)="applyFilter($event)"
+            placeholder="Hospital Name/Locality" #input>
+        <mat-icon matSuffix class="searchIcon">search</mat-icon>
     </div>
 
+    <div class="table-container">
+        <mat-card *ngIf="dataSource?.filteredData.length <= 0" style="margin-bottom: 5px">
+            <div><span>ZERO RESULT</span></div>
+        </mat-card>
 
-    <mat-card *ngIf="dataSource?.filteredData.length <= 0" style="margin-bottom: 5px">
-        <div><span>ZERO RESULT</span></div>
-    </mat-card>
+        <mat-card *ngIf="dataSource?.filteredData">
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" multiTemplateDataRows>
 
-    <mat-card *ngIf="dataSource?.filteredData">
-        <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" multiTemplateDataRows>
+                    <!--Sl No Column-->
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef> SL.No. </th>
+                        <td mat-cell *matCellDef="let element"> {{dataSource.filteredData.indexOf(element)+1}} </td>
+                    </ng-container>
 
-                <!--Sl No Column-->
-                <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef> SL.No. </th>
-                    <td mat-cell *matCellDef="let element"> {{dataSource.filteredData.indexOf(element)+1}} </td>
-                </ng-container>
+                    <!-- NAME Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> NAME </th>
+                        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                    </ng-container>
 
-                <!-- NAME Column -->
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> NAME </th>
-                    <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-                </ng-container>
+                    <!-- TOTAL BED CAPACITY Column -->
+                    <ng-container matColumnDef="totalBedCapacity">
+                        <th mat-header-cell *matHeaderCellDef> TOTAL BED CAPACITY </th>
+                        <td mat-cell *matCellDef="let row"> {{row.totalBedCapacity}}</td>
+                    </ng-container>
 
-                <!-- TOTAL BED CAPACITY Column -->
-                <ng-container matColumnDef="totalBedCapacity">
-                    <th mat-header-cell *matHeaderCellDef> TOTAL BED CAPACITY </th>
-                    <td mat-cell *matCellDef="let row"> {{row.totalBedCapacity}}</td>
-                </ng-container>
+                    <!-- CURRENT BED USAGE Column -->
+                    <ng-container matColumnDef="currentBedUsage">
+                        <th mat-header-cell *matHeaderCellDef> CURRENT BED USAGE </th>
+                        <td mat-cell *matCellDef="let row"> {{row.currentBedUsage}} </td>
+                    </ng-container>
 
-                <!-- CURRENT BED USAGE Column -->
-                <ng-container matColumnDef="currentBedUsage">
-                    <th mat-header-cell *matHeaderCellDef> CURRENT BED USAGE </th>
-                    <td mat-cell *matCellDef="let row"> {{row.currentBedUsage}} </td>
-                </ng-container>
-
-                <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-                <ng-container matColumnDef="expandedDetail">
-                    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-                        <div class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-                            <div class="element-description">
-                                {{element.location.addressLine}}
+                    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+                    <ng-container matColumnDef="expandedDetail">
+                        <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+                            <div class="element-detail"
+                                [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                                <div class="element-description">
+                                    {{element.location.addressLine}}
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </ng-container>
+                        </td>
+                    </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-                <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="element-row" [class.expanded-row]="expandedElement === element" (click)="expandedElement = expandedElement === element ? null : element">
-                </tr>
-                <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
-            </table>
+                    <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="element-row"
+                        [class.expanded-row]="expandedElement === element"
+                        (click)="expandedElement = expandedElement === element ? null : element">
+                    </tr>
+                    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+                </table>
 
-            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100] "></mat-paginator>
-        </div>
-    </mat-card>
-
+               
+            </div>
+        </mat-card>
+    </div>
+    <div class="footer">
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100] "></mat-paginator>
+    </div>    
 </div>

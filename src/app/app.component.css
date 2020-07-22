@@ -43,13 +43,6 @@ tr.element-row:not(.expanded-row):active {
     background-color: #efefef;
 }
 
-.searchBox {
-    margin-left: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 97%;
-}
-
 .mat-header-row {
     background-color: dodgerblue;
 }
@@ -57,11 +50,13 @@ tr.element-row:not(.expanded-row):active {
 .mat-header-cell {
     font-family: 'Bitter', serif;
     font-size: 20px !important;
+    text-align: center;
 }
 
 .mat-cell {
     font-family: 'Gayathri', sans-serif;
     font-size: 20px;
+    text-align: center;
 }
 
 mat-form-field {
@@ -72,3 +67,95 @@ mat-form-field {
     margin-left: 20px !important;
     font-size: 20px;
 }
+
+
+.bar{
+    margin:0 auto;
+    width:875px;
+    border-radius:30px;
+    border:8px solid #dcdcdc;
+  }
+  .bar:hover{
+    box-shadow: 1px 1px 8px 1px #dcdcdc;
+  }
+  .bar:focus-within{
+    box-shadow: 1px 1px 8px 1px #dcdcdc;
+    outline:none;
+  }
+  .searchbar{
+    height:45px;
+    border:none;
+    width:800px;
+    text-align: center;
+    outline: none;
+    border-radius: 30px;
+    height: 40px;
+    letter-spacing: 0.208em;
+    font-size: 30px;
+  }
+
+  .searchIcon{
+    height:20px;
+    position:relative;
+    top:5px;
+    left:10px;
+  }
+
+  .table-container {
+    max-height: calc(100vh - 155px);
+    overflow: auto;
+    }
+
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: red;
+        color: white;
+        text-align: center;
+      }
+
+  @media screen and (max-width:600px){
+    
+    .bar{
+        width:375px;
+      }
+    .searchbar{
+        width:300px;
+        letter-spacing: 0.208em;
+        font-size: 20px;
+      } 
+    .mat-header-cell {
+        font-family: 'Bitter', serif;
+        font-size: 13px !important;
+    }
+    
+    .mat-cell {
+        font-family: 'Gayathri', sans-serif;
+        font-size: 15px;
+    }
+         
+  }
+
+  @media screen and (min-width:600px) and (max-width:768px){
+    
+    .bar{
+        width:575px;
+      }
+    .searchbar{
+        width:500px;
+        letter-spacing: 0.208em;
+        font-size: 20px;
+      } 
+    .mat-header-cell {
+        font-family: 'Bitter', serif;
+        font-size: 13px !important;
+    }
+    
+    .mat-cell {
+        font-family: 'Gayathri', sans-serif;
+        font-size: 15px;
+    }
+         
+  }
