@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
@@ -16,6 +16,7 @@ import { DataFetchingService, Hospital } from './data-fetching.service';
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
+  encapsulation:ViewEncapsulation.None
 })
 export class AppComponent implements OnInit, AfterViewInit {
   DATA: Hospital[];

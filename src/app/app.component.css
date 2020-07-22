@@ -43,12 +43,6 @@ tr.element-row:not(.expanded-row):active {
     background-color: #efefef;
 }
 
-.searchBox {
-    margin-left: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 97%;
-}
 
 .mat-header-row {
     background-color: dodgerblue;
@@ -64,11 +58,47 @@ tr.element-row:not(.expanded-row):active {
     font-size: 20px;
 }
 
-mat-form-field {
-    width: 100%;
+.bar {
+    margin: 0 auto;
+    width: 875px;
+    border-radius: 30px;
+    border: 8px solid #dcdcdc;
 }
 
-.mat-form-field-label-wrapper {
-    margin-left: 20px !important;
-    font-size: 20px;
+.bar:hover {
+    box-shadow: 1px 1px 8px 1px #dcdcdc;
+}
+
+.bar:focus-within {
+    box-shadow: 1px 1px 8px 1px #dcdcdc;
+    outline: none;
+}
+
+.searchbar {
+    height: 45px;
+    border: none;
+    width: 800px;
+    font-size: 16px;
+    outline: none;
+    border-radius: 57px;
+}
+
+@media screen and (max-width: 600px) {
+    .mat-header-cell {
+        font-family: 'Bitter', serif;
+        font-size: 10px !important;
+    }
+    .mat-cell {
+        font-family: 'Gayathri', sans-serif;
+        font-size: 15px;
+    }
+    .bar {
+        width: 375px;
+    }
+
+    .searchbar {
+        height: 34px;
+        width: 300px;
+    }
+ 
 }

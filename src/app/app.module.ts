@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { FlexLayoutModule } from "@angular/flex-layout";
+
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -24,12 +27,14 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
     MatCardModule,
     CommonModule,
     MatIconModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
