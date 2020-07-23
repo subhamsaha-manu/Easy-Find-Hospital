@@ -21,7 +21,7 @@ export class DataFetchingService {
 
   getHospitalList(){
 
-    return this.httpClient.get<Hospital[]>("http://localhost:8080/api/hospital/");
+    return this.httpClient.get<Hospital[]>("https://live-hospitals.herokuapp.com/api/hospital/");
   }
 
 }

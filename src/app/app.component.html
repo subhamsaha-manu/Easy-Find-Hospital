@@ -1,24 +1,11 @@
-<div class="containerDiv" 
-     fxFlex
-     fxLayout="column"
-     fxLayout.xs="column" 
-     fxLayoutGap="10px" 
-    >
-    <!-- <mat-form-field appearance="outline" class="mat-elevation-z8 searchBox">
-         <div class="icon">
-                <span class="iconify" data-icon="carbon:search" data-inline="false" data-width="30px" data-height="30px"></span>
-            </div>
-        <mat-label>Hospital Name/Locality</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Hospital Name/Locality" #input>
-        <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field> -->
-
-    <div class="bar" fxFlexOffset = "1"
-        fxFlexOffset.xs="1">
-        <input class="searchbar" type="text" title="Search" (keyup)="applyFilter($event)" placeholder="Hospital Name/Locality" #input>
-        <span class="iconify" data-icon="carbon:search" data-inline="false" data-width="30px" data-height="30px"></span>
+<div class="containerDiv" fxFill fxLayout="column" fxLayoutGap="20px" fxLayout.xs="column" fxLayoutGap.xs="20px">
+    <div class="mat-elevation-z8 bar" fxFlexOffset="20px" fxFlexOffset.xs="20px">
+        <input class="searchbar" type="text" title="Search" (keyup)="applyFilter($event)"
+            placeholder="Hospital Name/Locality" #input>
+        <mat-icon matSuffix class="searchIcon">search</mat-icon>
     </div>
-    <div class="result">
+
+    <div class="table-container">
         <mat-card *ngIf="dataSource?.filteredData.length <= 0" style="margin-bottom: 5px">
             <div><span>ZERO RESULT</span></div>
         </mat-card>
@@ -63,7 +50,7 @@
                         </td>
                     </ng-container>
 
-                    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                    <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
                     <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="element-row"
                         [class.expanded-row]="expandedElement === element"
                         (click)="expandedElement = expandedElement === element ? null : element">
@@ -71,8 +58,11 @@
                     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
                 </table>
 
-                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100] "></mat-paginator>
+               
             </div>
         </mat-card>
     </div>
+    <div class="footer">
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100] "></mat-paginator>
+    </div>    
 </div>
