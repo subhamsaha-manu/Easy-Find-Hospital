@@ -1,5 +1,8 @@
 table {
     width: 100%;
+    border:solid black 1px;
+    border-radius:6px;
+    -moz-border-radius:6px;
 }
 
 tr.detail-row {
@@ -32,7 +35,7 @@ tr.element-row:not(.expanded-row):active {
 }
 
 .mat-row:nth-child(2n+1) {
-    background-color: #e4f0ec;
+    background-color: #aae8fb;
 }
 
 .mat-row:not(:nth-child(4n+1)) {
@@ -44,13 +47,14 @@ tr.element-row:not(.expanded-row):active {
 }
 
 .mat-header-row {
-    background-color: dodgerblue;
+    background-color: black;
 }
 
 .mat-header-cell {
     font-family: 'Bitter', serif;
     font-size: 20px !important;
     text-align: center;
+    color: white;
     padding-left: 2px !important;
     padding-right: 2px !important;
 }
@@ -121,7 +125,7 @@ mat-form-field {
         color: white;
         text-align: center;
       }
-
+  
   @media screen and (max-width:600px){
     
     .bar{

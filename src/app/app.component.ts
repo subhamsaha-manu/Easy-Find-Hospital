@@ -20,11 +20,11 @@ import { DataFetchingService, Hospital } from './data-fetching.service';
 export class AppComponent implements OnInit, AfterViewInit {
   DATA: Hospital[];
   title = 'EasyFindApp';
-  columnsToDisplay: string[] = ['id','name', 'totalBedCapacity', 'currentBedUsage'];
+  columnsToDisplay: string[] = ['id','name', 'totalBedCapacity', 'currentBedUsage','isUpdated'];
   dataSource: MatTableDataSource<Hospital>;
   expandedElement: Hospital | null;
 
-  @ViewChild(MatPaginator, {static: false}) set matPaginator(paginator: MatPaginator) { this.dataSource.paginator = paginator; }
+  @ViewChild(MatPaginator, {static: false}) set matPaginator(paginator: MatPaginator) { if(this.dataSource)this.dataSource.paginator = paginator; }
 
   constructor(private dataFetchingService:DataFetchingService) {
     
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-   
+  
   }
 
   ngAfterViewInit() {
