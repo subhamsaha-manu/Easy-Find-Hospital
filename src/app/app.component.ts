@@ -37,6 +37,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+    //console.log("Data source after filter",this.dataSource);
   }
 
   ngOnInit() {
@@ -51,7 +52,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource(this.DATA);
       //this.dataSource.paginator = this.paginator;
       
-      console.log("Data source",this.dataSource.data);
+      console.log("Data source",this.dataSource);
     });
   }
   

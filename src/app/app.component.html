@@ -66,7 +66,6 @@
                         (click)="expandedElement = expandedElement === element ? null : element">
                     </tr>
                     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
-                    <p *ngIf="dataSource.filteredData.length === 0">No records found</p>
                 </table>
                 <div style="text-align: right;margin-right: 20px;">
                     <span><span class="iconify" data-icon="el:warning-sign" data-inline="false"
