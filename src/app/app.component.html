@@ -1,5 +1,10 @@
-<div class="containerDiv" fxFill fxLayout="column" fxLayoutGap="20px" fxLayout.xs="column" fxLayoutGap.xs="20px">
-    <div class="mat-elevation-z8 bar" fxFlexOffset="20px" fxFlexOffset.xs="20px">
+<div class="containerDiv" fxFill 
+     fxLayout="column" 
+     fxLayout.xs="column"
+     fxLayoutAlign = "center none" 
+     fxLayoutAlign.xs="center none" 
+     fxLayoutGap.xs="20px">
+    <div class="mat-elevation-z8 bar">
         <input class="searchbar" type="text" title="Search" (keyup)="applyFilter($event)"
             placeholder="Hospital Name/Locality" #input>
         <mat-icon matSuffix class="searchIcon">search</mat-icon>

@@ -1,8 +1,11 @@
+.containerDiv{
+    position: relative;
+}
 table {
     width: 100%;
-    border:solid black 1px;
-    border-radius:6px;
-    -moz-border-radius:6px;
+    border:solid black .0625rem;
+    border-radius:.375rem;
+    -moz-border-radius:.375rem;
 }
 
 tr.detail-row {
@@ -27,7 +30,7 @@ tr.element-row:not(.expanded-row):active {
 }
 
 .element-description {
-    padding: 16px;
+    padding: 1rem;
 }
 
 .element-description-attribution {
@@ -52,19 +55,19 @@ tr.element-row:not(.expanded-row):active {
 
 .mat-header-cell {
     font-family: 'Bitter', serif;
-    font-size: 20px !important;
+    font-size: 1.25rem !important;
     text-align: center;
     color: white;
-    padding-left: 2px !important;
-    padding-right: 2px !important;
+    padding-left: .125re !important;
+    padding-right: .125rem !important;
 }
 
 .mat-cell {
     font-family: 'Gayathri', sans-serif;
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: center;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
 }
 
 mat-form-field {
@@ -72,48 +75,52 @@ mat-form-field {
 }
 
 .mat-form-field-label-wrapper {
-    margin-left: 20px !important;
-    font-size: 20px;
+    margin-left: 1.25rem !important;
+    font-size: 1.25rem;
 }
 
 
 .bar{
+    position: fixed;
+    top:1.25rem;
     margin:0 auto;
-    width:875px;
-    border-radius:30px;
-    border:8px solid #dcdcdc;
+    align-self: center;
+    /*right: 20px;*/
+    width:54.68rem;
+    border-radius:1.9rem;
+    border:0.5rem solid #dcdcdc;
   }
   .bar:hover{
-    box-shadow: 1px 1px 8px 1px #dcdcdc;
+    box-shadow: .0625rem .0625rem 0.5rem .0625rem #dcdcdc;
   }
   .bar:focus-within{
-    box-shadow: 1px 1px 8px 1px #dcdcdc;
+    box-shadow: .0625rem .0625rem 0.5rem .0625rem #dcdcdc;
     outline:none;
   }
   .searchbar{
-    height:45px;
+    height:2.81rem;
     border:none;
-    width:800px;
+    width:50rem;
     text-align: center;
     outline: none;
-    border-radius: 30px;
-    height: 40px;
-    letter-spacing: 0.208em;
-    font-size: 30px;
+    border-radius: 1.87rem;
+    height: 2.5rem;
+    letter-spacing: 0.208rem;
+    font-size: 1.87rem;
   }
 
   .searchIcon{
-    height:20px;
+    height:1.25rem;
     position:relative;
-    top:5px;
-    left:10px;
+    top:.312rem;
+    left:.625rem;
   }
 
   .table-container {
-    max-height: calc(100vh - 155px);
     overflow: auto;
-    margin-left: -1em;
-    margin-right: -1em;
+    position: fixed;
+    top:6.25rem;
+    min-width: 100%;
     }
 
     .footer {
@@ -125,25 +132,29 @@ mat-form-field {
         color: white;
         text-align: center;
       }
+
+    mat-card{
+        padding: 0px !important;
+    }
   
   @media screen and (max-width:600px){
     
     .bar{
-        width:375px;
+        width:23.43em;
       }
     .searchbar{
-        width:300px;
+        width:18.75em;
         letter-spacing: 0.208em;
-        font-size: 15px;
+        font-size: .93em;
       } 
     .mat-header-cell {
         font-family: 'Bitter', serif;
-        font-size: 11px !important;
+        font-size: .68em !important;
     }
     
     .mat-cell {
         font-family: 'Gayathri', sans-serif;
-        font-size: 15px;
+        font-size: .93em;
     }
          
   }
@@ -151,21 +162,21 @@ mat-form-field {
   @media screen and (min-width:600px) and (max-width:768px){
     
     .bar{
-        width:575px;
+        width:35.93em;
       }
     .searchbar{
-        width:500px;
+        width:31.25em;
         letter-spacing: 0.208em;
-        font-size: 20px;
+        font-size: 1.25em;
       } 
     .mat-header-cell {
         font-family: 'Bitter', serif;
-        font-size: 13px !important;
+        font-size: .81em !important;
     }
     
     .mat-cell {
         font-family: 'Gayathri', sans-serif;
-        font-size: 15px;
+        font-size: .94em;
     }
          
   }
