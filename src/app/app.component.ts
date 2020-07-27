@@ -48,7 +48,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.dataFetchingService.getHospitalList()
     .subscribe(respone =>{
       this.DATA = respone;
-      console.log("Response fetched ",this.DATA[0].location.addressLine);
+      console.log("Response fetched ",this.DATA[0].contact.addressLine);
       this.dataSource = new MatTableDataSource(this.DATA);
       //this.dataSource.paginator = this.paginator;
       

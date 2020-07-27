@@ -6,9 +6,24 @@ import { HttpClient } from '@angular/common/http';
 export interface Hospital {
   id: string;
   name: string;
-  location:{addressLine:string,district:string,state:string,country:string,pinCode:string}
-  totalBedCapacity: number;
-  currentBedUsage: number;
+  additionalInfo:string;
+  contact:
+    {
+      addressLine:string,
+      district:string,
+      state:string,
+      country:string,
+      pinCode:string,
+      phone:string
+    };
+  usage:
+    {
+      totalBedCapacity: number,
+      vacantBeds: number,
+      lastUpdated:string,
+      isStale : boolean,
+      usagePercentage : number
+    }  
 }
 
 

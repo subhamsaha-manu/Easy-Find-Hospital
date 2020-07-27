@@ -135,6 +135,8 @@ mat-form-field {
 
     mat-card{
         padding: 0px !important;
+        overflow: auto;
+        max-height: 40vw;
     }
   
   @media screen and (max-width:600px){
@@ -156,13 +158,17 @@ mat-form-field {
         font-family: 'Gayathri', sans-serif;
         font-size: .93em;
     }
+
+    mat-card{
+      max-height: 100vw;
+    }
          
   }
 
   @media screen and (min-width:600px) and (max-width:768px){
     
     .bar{
-        width:35.93em;
+        width:43.93em;
       }
     .searchbar{
         width:31.25em;
@@ -177,6 +183,10 @@ mat-form-field {
     .mat-cell {
         font-family: 'Gayathri', sans-serif;
         font-size: .94em;
+    }
+
+    mat-card{
+      max-height: 60vw;
     }
          
   }
