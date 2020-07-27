@@ -20,7 +20,7 @@ import { DataFetchingService, Hospital } from './data-fetching.service';
 export class AppComponent implements OnInit, AfterViewInit {
   DATA: Hospital[];
   title = 'EasyFindApp';
-  columnsToDisplay: string[] = ['id','name', 'totalBedCapacity', 'currentBedUsage','isUpdated'];
+  columnsToDisplay: string[] = ['name', 'totalBedCapacity', 'vacantBeds','phoneNumber','isPrivate'];
   dataSource: MatTableDataSource<Hospital>;
   expandedElement: Hospital | null;
 

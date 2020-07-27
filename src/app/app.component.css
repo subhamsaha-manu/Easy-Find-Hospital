@@ -1,192 +1,183 @@
-.containerDiv{
-    position: relative;
+.containerDiv {
+  position: relative;
 }
 table {
-    width: 100%;
-    border:solid black .0625rem;
-    border-radius:.375rem;
-    -moz-border-radius:.375rem;
+  width: 100%;
+  border: solid black 0.0625rem;
+  border-radius: 0.375rem;
+  -moz-border-radius: 0.375rem;
 }
 
 tr.detail-row {
-    height: 0;
+  height: 0;
 }
 
 tr.element-row:not(.expanded-row):hover {
-    background: whitesmoke;
+  background: whitesmoke;
 }
 
 tr.element-row:not(.expanded-row):active {
-    background: #efefef;
+  background: #efefef;
 }
 
 .element-row td {
-    border-bottom-width: 0;
+  border-bottom-width: 0;
 }
 
 .element-detail {
-    overflow: hidden;
-    display: flex;
+  overflow: hidden;
+  display: flex;
 }
 
 .element-description {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .element-description-attribution {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
-.mat-row:nth-child(2n+1) {
-    background-color: #aae8fb;
+.mat-row:nth-child(2n + 1) {
+  background-color: #aae8fb;
 }
 
-.mat-row:not(:nth-child(4n+1)) {
-    background-color: #ffffff;
+.mat-row:not(:nth-child(4n + 1)) {
+  background-color: #ffffff;
 }
 
 .mat-column-expandedDetail {
-    background-color: #efefef;
+  background-color: #efefef;
 }
 
 .mat-header-row {
-    background-color: black;
+  background-color: black;
 }
 
 .mat-header-cell {
-    font-family: 'Bitter', serif;
-    font-size: 1.25rem !important;
-    text-align: center;
-    color: white;
-    padding-left: .125re !important;
-    padding-right: .125rem !important;
+  font-family: "Bitter", serif;
+  font-size: 1.25rem !important;
+  color: white;
+  padding-left: 0.125re !important;
+  padding-right: 0.125rem !important;
 }
 
 .mat-cell {
-    font-family: 'Gayathri', sans-serif;
-    font-size: 1.25rem;
-    text-align: center;
-    padding-left: 0rem !important;
-    padding-right: 0rem !important;
+  font-family: "Gayathri", sans-serif;
+  font-size: 1.25rem;
+  padding-left: 2px !important;
+  padding-right: 0rem !important;
 }
 
-mat-form-field {
-    width: 100%;
+.bar {
+  position: fixed;
+  top: 1.25rem;
+  margin: 0 auto;
+  align-self: center;
+  /*right: 20px;*/
+  width: 54.68rem;
+  border-radius: 1.9rem;
+  border: 0.5rem solid #dcdcdc;
+}
+.bar:hover {
+  box-shadow: 0.0625rem 0.0625rem 0.5rem 0.0625rem #dcdcdc;
+}
+.bar:focus-within {
+  box-shadow: 0.0625rem 0.0625rem 0.5rem 0.0625rem #dcdcdc;
+  outline: none;
+}
+.searchbar {
+  height: 2.81rem;
+  border: none;
+  width: 50rem;
+  text-align: center;
+  outline: none;
+  border-radius: 1.87rem;
+  height: 2.5rem;
+  letter-spacing: 0.208rem;
+  font-size: 1.87rem;
 }
 
-.mat-form-field-label-wrapper {
-    margin-left: 1.25rem !important;
-    font-size: 1.25rem;
+.searchIcon {
+  height: 1.25rem;
+  position: relative;
+  top: 0.312rem;
+  left: 0.625rem;
 }
 
+.table-container {
+  overflow: auto;
+  position: fixed;
+  top: 6.25rem;
+  min-width: 100%;
+}
 
-.bar{
-    position: fixed;
-    top:1.25rem;
-    margin:0 auto;
-    align-self: center;
-    /*right: 20px;*/
-    width:54.68rem;
-    border-radius:1.9rem;
-    border:0.5rem solid #dcdcdc;
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+
+.table-card {
+  padding: 0px !important;
+  overflow: auto;
+  max-height: 40vw;
+}
+.otherInformation {
+  width: 150px;
+  margin-top: 20px;
+}
+
+#addressLine{
+  height: 60px;
+}
+@media screen and (max-width: 600px) {
+  .bar {
+    width: 23.43em;
   }
-  .bar:hover{
-    box-shadow: .0625rem .0625rem 0.5rem .0625rem #dcdcdc;
+  .searchbar {
+    width: 18.75em;
+    letter-spacing: 0.208em;
+    font-size: 0.93em;
   }
-  .bar:focus-within{
-    box-shadow: .0625rem .0625rem 0.5rem .0625rem #dcdcdc;
-    outline:none;
-  }
-  .searchbar{
-    height:2.81rem;
-    border:none;
-    width:50rem;
-    text-align: center;
-    outline: none;
-    border-radius: 1.87rem;
-    height: 2.5rem;
-    letter-spacing: 0.208rem;
-    font-size: 1.87rem;
-  }
-
-  .searchIcon{
-    height:1.25rem;
-    position:relative;
-    top:.312rem;
-    left:.625rem;
-  }
-
-  .table-container {
-    overflow: auto;
-    position: fixed;
-    top:6.25rem;
-    min-width: 100%;
-    }
-
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: red;
-        color: white;
-        text-align: center;
-      }
-
-    .table-card{
-        padding: 0px !important;
-        overflow: auto;
-        max-height: 40vw;
-    }
-  
-  @media screen and (max-width:600px){
-    
-    .bar{
-        width:23.43em;
-      }
-    .searchbar{
-        width:18.75em;
-        letter-spacing: 0.208em;
-        font-size: .93em;
-      } 
-    .mat-header-cell {
-        font-family: 'Bitter', serif;
-        font-size: .68em !important;
-    }
-    
-    .mat-cell {
-        font-family: 'Gayathri', sans-serif;
-        font-size: .93em;
-    }
-
-    .table-card{
-      max-height: 140vw;
-    }
-         
+  .mat-header-cell {
+    font-family: "Bitter", serif;
+    font-size: 0.68em !important;
   }
 
-  @media screen and (min-width:600px) and (max-width:768px){
-    
-    .bar{
-        width:43.93em;
-      }
-    .searchbar{
-        width:31.25em;
-        letter-spacing: 0.208em;
-        font-size: 1.25em;
-      } 
-    .mat-header-cell {
-        font-family: 'Bitter', serif;
-        font-size: .81em !important;
-    }
-    
-    .mat-cell {
-        font-family: 'Gayathri', sans-serif;
-        font-size: .94em;
-    }
-
-    .table-card{
-      max-height: 60vw;
-    }
-         
+  .mat-cell {
+    font-family: "Gayathri", sans-serif;
+    font-size: 0.93em;
   }
+
+  .table-card {
+    max-height: 140vw;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 768px) {
+  .bar {
+    width: 43.93em;
+  }
+  .searchbar {
+    width: 31.25em;
+    letter-spacing: 0.208em;
+    font-size: 1.25em;
+  }
+  .mat-header-cell {
+    font-family: "Bitter", serif;
+    font-size: 0.81em !important;
+  }
+
+  .mat-cell {
+    font-family: "Gayathri", sans-serif;
+    font-size: 0.94em;
+  }
+
+  .table-card {
+    max-height: 60vw;
+  }
+}
