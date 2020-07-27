@@ -15,7 +15,7 @@
         <mat-spinner style="margin-top: 10%;"></mat-spinner>
     </div>
     <div class="table-container">
-        <mat-card *ngIf="dataSource?.filteredData">
+        <mat-card *ngIf="dataSource?.filteredData" class="table-card">
             <div class="mat-elevation-z8">
                 <table mat-table [dataSource]="dataSource" multiTemplateDataRows>
 
@@ -60,7 +60,16 @@
                             <div class="element-detail"
                                 [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                                 <div class="element-description">
-                                    {{element.contact.addressLine}}
+                                    <p fxLayout="row" fxLayout.xs="row">
+                                        <mat-form-field appearance="outline">
+                                          <mat-label>Address</mat-label>
+                                          <input matInput value="{{element.contact.addressLine}}" readonly="readonly">
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Phone</mat-label>
+                                            <input matInput value="{{element.contact.phone}}" readonly="readonly">
+                                          </mat-form-field>
+                                      </p>
                                 </div>
                             </div>
                         </td>

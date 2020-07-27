@@ -133,7 +133,7 @@ mat-form-field {
         text-align: center;
       }
 
-    mat-card{
+    .table-card{
         padding: 0px !important;
         overflow: auto;
         max-height: 40vw;
@@ -159,8 +159,8 @@ mat-form-field {
         font-size: .93em;
     }
 
-    mat-card{
-      max-height: 100vw;
+    .table-card{
+      max-height: 140vw;
     }
          
   }
@@ -185,7 +185,7 @@ mat-form-field {
         font-size: .94em;
     }
 
-    mat-card{
+    .table-card{
       max-height: 60vw;
     }
          
