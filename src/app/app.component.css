@@ -27,6 +27,7 @@ tr.element-row:not(.expanded-row):active {
 .element-detail {
   overflow: hidden;
   display: flex;
+  color: cornflowerblue;
 }
 
 .element-description {
@@ -107,7 +108,7 @@ tr.element-row:not(.expanded-row):active {
 .table-container {
   overflow: auto;
   position: fixed;
-  top: 6.25rem;
+  top: 7.30rem;
   min-width: 100%;
 }
 
@@ -126,14 +127,7 @@ tr.element-row:not(.expanded-row):active {
   overflow: auto;
   max-height: 40vw;
 }
-.otherInformation {
-  width: 150px;
-  margin-top: 20px;
-}
 
-#addressLine{
-  height: 60px;
-}
 @media screen and (max-width: 600px) {
   .bar {
     width: 23.43em;
@@ -155,6 +149,14 @@ tr.element-row:not(.expanded-row):active {
 
   .table-card {
     max-height: 140vw;
+  }
+  .otherInformation {
+    width: 150px;
+    margin-top: 20px;
+  }
+  
+  #addressLine{
+    height: 60px;
   }
 }
 
@@ -179,5 +181,20 @@ tr.element-row:not(.expanded-row):active {
 
   .table-card {
     max-height: 60vw;
+  }
+
+}
+
+@media screen and (min-width: 768px){
+
+  #addressFormField{
+    width: 600px;
+  }
+  #addressLine{
+    width: 600px;
+  }
+
+  .otherInformation {
+    width: 200px;
   }
 }

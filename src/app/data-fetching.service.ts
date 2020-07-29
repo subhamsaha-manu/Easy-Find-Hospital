@@ -23,7 +23,8 @@ export interface Hospital {
       lastUpdated:string,
       isStale : boolean,
       usagePercentage : number
-    }  
+    }
+  isPrivate:boolean;  
 }
 
 
