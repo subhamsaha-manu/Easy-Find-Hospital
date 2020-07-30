@@ -16,6 +16,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+import {MatChipsModule} from '@angular/material/chips'; 
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     CommonModule,
     MatIconModule,
     FlexLayoutModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,14 +20,15 @@ import { DataFetchingService, Hospital } from './data-fetching.service';
 export class AppComponent implements OnInit, AfterViewInit {
   DATA: Hospital[];
   title = 'EasyFindApp';
-  columnsToDisplay: string[] = ['name', 'totalBedCapacity', 'vacantBeds', 'phoneNumber', 'isPrivate'];
+  columnsToDisplay: string[] = ['name', 'totalBedCapacity', 'vacantBeds', 'phoneNumber'];
   dataSource: MatTableDataSource<Hospital>;
   expandedElement: Hospital | null;
   screenSizeLarge: boolean = false;
   @ViewChild(MatPaginator, { static: false }) set matPaginator(paginator: MatPaginator) {
     if (this.dataSource) this.dataSource.paginator = paginator; 
     const matTable = document.getElementById('matTable');
-    matTable.scrollTop = 0;
+    if(matTable)
+      matTable.scrollTop = 0;
   }
 
   constructor(private dataFetchingService: DataFetchingService) {
@@ -47,7 +48,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     console.log("Window size ", window.screen.width);
     if (window.screen.width >= 1920) {
-      this.columnsToDisplay = ['name', 'totalBedCapacity', 'vacantBeds', 'phoneNumber', 'isPrivate', 'test'];
+      this.columnsToDisplay = ['name', 'totalBedCapacity', 'vacantBeds', 'phoneNumber', 'isPrivate'];
       //this.screenSizeLarge = true;
     } else {
       this.screenSizeLarge = true;
