@@ -138,13 +138,14 @@
                     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
                 </table>
             </div>
+            <div style="text-align: right;">
+                <span>
+                    <span class="iconify" data-icon="el:warning-sign" data-inline="false"
+                        style="color: #ffb31a;margin-right: 2px;"></span>Values fetched from Wb Govt Health website
+                </span>
+            </div>
         </mat-card>
-        <div style="text-align: right;margin-right: 20px;">
-            <span>
-                <span class="iconify" data-icon="el:warning-sign" data-inline="false"
-                    style="color: #ffb31a;margin-right: 2px;"></span>Values fetched from Wb Govt Health website
-            </span>
-        </div>
+        
     </div>
     <div class="footer">
         <mat-paginator [pageSizeOptions]="[10, 20, 50, 100] " style="height: 50px;"></mat-paginator>
