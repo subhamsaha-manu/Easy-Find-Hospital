@@ -1,5 +1,8 @@
 <div class="containerDiv" fxFill fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center none"
     fxLayoutAlign.xs="center none" fxLayoutGap="20px" fxLayoutGap.xs="20px">
+    <div class="headingDiv">
+        <h2>Hospital Usage Statistics of West Bengal</h2>
+    </div>
     <div class="mat-elevation-z8 bar">
         <input class="searchbar" type="text" title="Search" (keyup)="applyFilter($event)"
             placeholder="Hospital Name/Locality" #input>
@@ -11,8 +14,8 @@
     </div>
     <div style="text-align: right;margin-right: 20px;position: fixed;top: 6.0rem;">
         <span>
-            <span class="iconify" data-icon="el:warning-sign" data-inline="false"
-                style="color: #ffb31a;margin-right: 2px;"></span>Click on rows to view more details
+            <span class="iconify" data-icon="vaadin:exclamation" data-inline="false" data-width="20"
+                data-height="20"></span>Click on rows to view more details
         </span>
     </div>
     <div class="table-container">
@@ -47,7 +50,7 @@
                     <!-- PHONE NUMBER Column -->
                     <ng-container matColumnDef="phoneNumber">
                         <th mat-header-cell *matHeaderCellDef> PHONE NUMBER </th>
-                        <td mat-cell *matCellDef="let row" style="font-size: 11px;"> {{row.contact.phone}} </td>
+                        <td mat-cell *matCellDef="let row" id="phoneNumberRow"> {{row.contact.phone}} </td>
                     </ng-container>
 
 
@@ -56,74 +59,39 @@
                         <th mat-header-cell *matHeaderCellDef></th>
                         <td mat-cell *matCellDef="let row">
                             <mat-chip style="width: 50px;" *ngIf="row.isPrivate===true">Private</mat-chip>
-                            <mat-chip *ngIf="row.isPrivate===false">Government</mat-chip>
+                            <mat-chip *ngIf="row.isPrivate===false">Govt</mat-chip>
                         </td>
                     </ng-container>
-                    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-                    <!-- <ng-container matColumnDef="expandedDetail">
-                        <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-                            <div class="element-detail"
-                                [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-                                <div class="element-description">
-                                    <p fxLayout="row" fxLayout.xs="row wrap" fxLayoutGap="20px">
-                                        <mat-form-field appearance="standard" id="addressFormField">
-                                            <mat-label>Address</mat-label>
-                                            <textarea id="addressLine" matInput value="{{element.contact.addressLine}}"
-                                                readonly="readonly"></textarea>
-                                        </mat-form-field>
-                                        <mat-form-field appearance="standard" class="otherInformation">
-                                            <mat-label>Additional Information</mat-label>
-                                            <input matInput value="{{element.additionalInfo}}" readonly="readonly">
-                                        </mat-form-field>
-                                        <mat-form-field appearance="standard" class="otherInformation">
-                                            <mat-label>Usage Percentage</mat-label>
-                                            <input matInput value="{{element.usage.usagePercentage}}"
-                                                readonly="readonly">
-                                        </mat-form-field>
-                                        <mat-form-field appearance="standard" class="otherInformation">
-                                            <mat-label>Last Updated</mat-label>
-                                            <input matInput value="{{element.usage.lastUpdated}}" readonly="readonly">
-                                        </mat-form-field>
-                                        <mat-form-field appearance="standard" class="otherInformation" *ngIf="screenSizeLarge == true">
-                                            <mat-label>TEST</mat-label>
-                                            <input matInput value="TEST" readonly="readonly">
-                                        </mat-form-field>
-                                    </p>
-                                </div>
-                            </div>
-                        </td>
-                    </ng-container> -->
 
                     <ng-container matColumnDef="expandedDetail">
                         <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
                             <div class="element-detail"
                                 [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                                 <div class="element-description">
-                                    <p fxLayout="row" fxLayout.xs="row wrap" fxLayoutGap="20px">
-                                        <mat-form-field appearance="fill" id="addressFormField">
-                                            <mat-label>Address</mat-label>
-                                            <textarea id="addressLine" matInput value="{{element.contact.addressLine}}"
-                                            [readonly]="true"></textarea>
-                                        </mat-form-field>
-                                        <mat-form-field appearance="fill" class="otherInformation" *ngIf="element.additionalInfo">
-                                            <mat-label>Additional Information</mat-label>
-                                            <input matInput value="{{element.additionalInfo}}" [readonly]="true">
-                                        </mat-form-field>
-                                        <!-- <mat-form-field appearance="fill" class="otherInformation">
-                                            <mat-label>Usage Percentage</mat-label>
-                                            <input matInput value="{{element.usage.usagePercentage}}"
-                                            [readonly]="true" [disabled]="true">
-                                        </mat-form-field> -->
-                                        <mat-form-field appearance="fill" class="otherInformation">
-                                            <mat-label>Last Updated</mat-label>
-                                            <input matInput value="{{element.usage.lastUpdated}}"  [readonly]="true">
-                                        </mat-form-field>
-                                        <mat-form-field appearance="fill" class="otherInformation" *ngIf="screenSizeLarge == true">
-                                            <mat-label>Private Hospital</mat-label>
-                                            <input matInput *ngIf="element.isPrivate===true" value="Yes" readonly="readonly">
-                                            <input matInput *ngIf="element.isPrivate===false" value="No" readonly="readonly">
-                                        </mat-form-field>
-                                    </p>
+                                    <div fxLayout="row wrap" fxLayout.xs="row wrap" fxLayoutGap.xs="10px" fxLayoutGap="10px">
+                                        <div fxLayout.xs="row" fxLayout="row" class="detailSubDiv">
+                                            <span class="iconify" data-icon="bx:bx-map" data-inline="false"
+                                                data-width="40" data-height="40"></span>
+                                            <span id="addressLine">{{element.contact.addressLine}}</span>
+                                        </div>
+                                        <div *ngIf="element.additionalInfo" fxLayout.xs="row" fxLayout="row" class="detailSubDiv">
+                                            <span class="iconify info_icon" data-icon="el:info-circle" data-inline="false"
+                                                data-width="24" data-height="24"></span>
+                                            <span class="otherInformation">{{element.additionalInfo}}</span>
+                                        </div>
+                                        <div fxLayout.xs="row" fxLayout="row" class="detailSubDiv">
+                                            <span class="iconify info_icon" data-icon="bi:calendar-date" data-inline="false"
+                                                data-width="24" data-height="24"></span>
+                                            <span class="otherInformation">Updated On
+                                                {{element.usage.lastUpdated}}</span>
+                                        </div>
+                                        <div *ngIf="screenSizeLarge == true" fxLayout.xs="row" fxLayout="row" class="detailSubDiv">
+                                            <span class="iconify info_icon" data-icon="uil:hospital-symbol" data-inline="false"
+                                                data-width="24" data-height="24"></span>
+                                            <span *ngIf="element.isPrivate===true" class="otherInformation">Private</span>
+                                            <span *ngIf="element.isPrivate===false" class="otherInformation">Govt.</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </td>
@@ -133,19 +101,23 @@
                     <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="element-row"
                         [class.expanded-row]="expandedElement === element"
                         (click)="expandedElement = expandedElement === element ? null : element"
-                        [ngStyle]="{'background-color':element.usage.usagePercentage >= 90 ? '#ff9999' : '#bbff99' }">
+                        [ngStyle]="{'background-color':element.usage.usagePercentage >= 90 ? '#ff9999' : '#ffffff' }">
                     </tr>
                     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
                 </table>
             </div>
-            <div style="text-align: right;">
+            <div style="">
+                <span style="margin-right :20px">
+                    <span class="iconify" data-icon="maki:information-11" data-inline="false" data-width="20" data-height="20" style="margin-top: 5px;"></span>
+                    Information as per wbhealth.gov.in
+                </span>
                 <span>
-                    <span class="iconify" data-icon="el:warning-sign" data-inline="false"
-                        style="color: #ffb31a;margin-right: 2px;"></span>Values fetched from Wb Govt Health website
+                    <span class="iconify" data-icon="ion:share-social-sharp" data-inline="false" data-width="20" data-height="20"></span>
+                    A social IT initiative
                 </span>
             </div>
         </mat-card>
-        
+
     </div>
     <div class="footer">
         <mat-paginator [pageSizeOptions]="[10, 20, 50, 100] " style="height: 50px;"></mat-paginator>
