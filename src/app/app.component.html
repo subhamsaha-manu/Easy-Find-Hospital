@@ -4,7 +4,7 @@
         <h2>Hospital Usage Statistics of West Bengal</h2>
     </div>
     <div class="mat-elevation-z8 bar">
-        <input class="searchbar" type="text" title="Search" (keyup)="applyFilter($event)"
+        <input class="searchbar" type="text" title="Search" (keyup)="applyFilter($event.target.value)"
             placeholder="Hospital Name/Locality" #input>
         <mat-icon matSuffix class="searchIcon">search</mat-icon>
     </div>
@@ -12,7 +12,7 @@
     <div *ngIf="!DATA" fxLayoutAlign="center center">
         <mat-spinner style="margin-top: 10%;"></mat-spinner>
     </div>
-    <div style="text-align: right;margin-right: 20px;position: fixed;top: 6.0rem;">
+    <div style="text-align: right;margin-right: 20px;position: fixed;top: 9.0rem;">
         <span>
             <span class="iconify" data-icon="vaadin:exclamation" data-inline="false" data-width="20"
                 data-height="20"></span>Click on rows to view more details

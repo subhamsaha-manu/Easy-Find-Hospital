@@ -24,6 +24,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Hospital>;
   expandedElement: Hospital | null;
   screenSizeLarge: boolean = false;
+
   @ViewChild(MatPaginator, { static: false }) set matPaginator(paginator: MatPaginator) {
     if (this.dataSource) this.dataSource.paginator = paginator; 
     const matTable = document.getElementById('matTable');
@@ -35,10 +36,28 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
+  applyFilter(filterValue : string) {
+    //let filterValue = (event.target as HTMLInputElement).value;
+    /*filterValue = filterValue.trim().toLocaleLowerCase();*/
+    /*if(filterValue.trim().toLocaleLowerCase() === "private")
+      filterValue = "true";*/
+      this.dataSource.filterPredicate = (data:Hospital,filterString:string) => {
+        //console.log("Therererere")
+        //console.log("Filter String ",filterString);
+        if((data.name.trim().toLowerCase().indexOf(filterString.trim().toLowerCase())!=-1) || ((data.contact.addressLine.trim().toLowerCase().indexOf(filterString.trim().toLowerCase())!=-1))){
+          console.log(data.name);
+          return true;
+        }else
+          return false;
+      }
+    this.dataSource.filter = filterValue;
+    
+    // this.dataSource.data.filter(e =>{
+    //   if(e.name.indexOf(filterValue) != -1 || e.contact.addressLine.indexOf(filterValue) !=-1){
+    //     this.dataSource.f
+    //     console.log(typeof e);
+    //   }
+    // });
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -53,18 +72,20 @@ export class AppComponent implements OnInit, AfterViewInit {
     } else {
       this.screenSizeLarge = true;
     }
+    
   }
 
   ngAfterViewInit() {
     this.dataFetchingService.getHospitalList()
       .subscribe(respone => {
         this.DATA = respone;
-        console.log("Response fetched ", typeof this.DATA[0].isPrivate);
+        console.log("Response fetched ", this.DATA.length);
         this.dataSource = new MatTableDataSource(this.DATA);
         //this.dataSource.paginator = this.paginator;
 
         console.log("Data source", this.dataSource);
       });
+      
   }
 
 }

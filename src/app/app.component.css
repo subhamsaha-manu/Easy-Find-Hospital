@@ -69,13 +69,13 @@ tr.element-row:not(.expanded-row):active {
 }
 .headingDiv{
   position: fixed;
-  top: 0.25rem;
+  top: 1.25rem;
   margin: 0 auto;
   align-self: center;
 }
 .bar {
   position: fixed;
-  top: 2.25rem;
+  top: 4.25rem;
   margin: 0 auto;
   align-self: center;
   /*right: 20px;*/
@@ -112,7 +112,7 @@ tr.element-row:not(.expanded-row):active {
 .table-container {
   overflow: auto;
   position: fixed;
-  top: 7.30rem;
+  top: 11.30rem;
   min-width: 100%;
 }
 
