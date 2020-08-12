@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-
+import {FormControl} from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DataFetchingService, Hospital } from './data-fetching.service';
+import { Observable } from 'rxjs';
+
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -20,15 +23,22 @@ import { DataFetchingService, Hospital } from './data-fetching.service';
 export class AppComponent implements OnInit, AfterViewInit {
   DATA: Hospital[];
   title = 'EasyFindApp';
-  columnsToDisplay: string[] = ['name', 'totalBedCapacity', 'vacantBeds', 'phoneNumber'];
+  columnsToDisplay: string[] = ['name','vacantBeds', 'phoneNumber','isPrivate'];
   dataSource: MatTableDataSource<Hospital>;
   expandedElement: Hospital | null;
   screenSizeLarge: boolean = false;
-
+  //filterByDistrictDropDown: string;
+  filterByHospitalTypeDropDown: string;
+  searchBar: string;
+  districtList = [];
+  districtValue: string;
+  myControl = new FormControl();
+  filteredOptions: Observable<string[]>;
+  
   @ViewChild(MatPaginator, { static: false }) set matPaginator(paginator: MatPaginator) {
-    if (this.dataSource) this.dataSource.paginator = paginator; 
+    if (this.dataSource) this.dataSource.paginator = paginator;
     const matTable = document.getElementById('matTable');
-    if(matTable)
+    if (matTable)
       matTable.scrollTop = 0;
   }
 
@@ -36,32 +46,57 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   }
 
-  applyFilter(filterValue : string) {
+  applyFilter(filterValue: string) {
     //let filterValue = (event.target as HTMLInputElement).value;
     /*filterValue = filterValue.trim().toLocaleLowerCase();*/
     /*if(filterValue.trim().toLocaleLowerCase() === "private")
       filterValue = "true";*/
-      this.dataSource.filterPredicate = (data:Hospital,filterString:string) => {
-        //console.log("Therererere")
-        //console.log("Filter String ",filterString);
-        if((data.name.trim().toLowerCase().indexOf(filterString.trim().toLowerCase())!=-1) || ((data.contact.addressLine.trim().toLowerCase().indexOf(filterString.trim().toLowerCase())!=-1))){
-          console.log(data.name);
-          return true;
-        }else
-          return false;
-      }
+
+    console.log("Filter value ", filterValue);
+    filterValue = this.searchBar + " " + this.myControl.value + " " + (this.filterByHospitalTypeDropDown + "");
+    filterValue = filterValue.trim().toLowerCase();
+    this.dataSource.filterPredicate = this.customFilter();
     this.dataSource.filter = filterValue;
-    
-    // this.dataSource.data.filter(e =>{
-    //   if(e.name.indexOf(filterValue) != -1 || e.contact.addressLine.indexOf(filterValue) !=-1){
-    //     this.dataSource.f
-    //     console.log(typeof e);
-    //   }
-    // });
+    //console.log("Data source after filter",this.dataSource);
+
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-    //console.log("Data source after filter",this.dataSource);
+  }
+
+
+  customFilter() {
+    let filterFunction = function (data: any, filter: string): boolean {
+
+      let matchFound = false;
+      console.log("Filter string in customFilter() ",filter);
+      let filterString:string;
+      //console.log(typeof filter);
+      filterString = filter.replace(/undefined/g, "").trim();
+      //console.log("Filter string without undefined ", filterString);
+      let rowStr = JSON.stringify(data).trim().toLowerCase().replace(/"/g, '');
+      //console.log("Stringify ", rowStr);
+      if (filterString.includes("true"))
+        filterString = filterString.replace("true", "isPrivate:true");
+      if (filterString.includes("false"))
+        filterString = filterString.replace("false", "isPrivate:false");
+      /*if(rowStr.includes(filterString))
+        matchFound = true;*/
+      //console.log(filterString);
+      var exp = RegExp("(?=.*?\\b" +
+        filterString
+          .split(" ")
+          .join(")(?=.*?\\b") +
+        ").*",
+        "i"
+      );
+      var res = exp.test(rowStr);
+      if (res)
+        matchFound = true;
+
+      return matchFound;
+    }
+    return filterFunction;
   }
 
   ngOnInit() {
@@ -72,20 +107,39 @@ export class AppComponent implements OnInit, AfterViewInit {
     } else {
       this.screenSizeLarge = true;
     }
-    
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.districtList.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
 
   ngAfterViewInit() {
     this.dataFetchingService.getHospitalList()
       .subscribe(respone => {
         this.DATA = respone;
-        console.log("Response fetched ", this.DATA.length);
+        //console.log("Response fetched ", this.DATA.length);
         this.dataSource = new MatTableDataSource(this.DATA);
         //this.dataSource.paginator = this.paginator;
-
-        console.log("Data source", this.dataSource);
+        this.DATA.forEach((val, index, arr) => {
+          if (!this.districtList.includes(val.contact.district))
+            this.districtList.push(val.contact.district)
+        });
+        //console.log(this.districtList);
+        //console.log("Data source", this.dataSource);
+        this.filteredOptions = this.myControl.valueChanges.pipe(startWith(''),
+        map(value => this._filter(value)));    
       });
-      
   }
 
+
+  resetFilters() {
+    //this.filterByDistrictDropDown = "";
+    this.searchBar = "";
+    this.myControl.patchValue('');
+    this.filterByHospitalTypeDropDown = "";
+    this.dataSource.filter = "";
+    this.dataSource.paginator.firstPage();
+  }
 }

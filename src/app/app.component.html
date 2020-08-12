@@ -5,14 +5,52 @@
     </div>
     <div class="mat-elevation-z8 bar">
         <input class="searchbar" type="text" title="Search" (keyup)="applyFilter($event.target.value)"
-            placeholder="Hospital Name/Locality" #input>
+            placeholder="Hospital Name/Locality" [(ngModel)]="searchBar">
         <mat-icon matSuffix class="searchIcon">search</mat-icon>
     </div>
 
     <div *ngIf="!DATA" fxLayoutAlign="center center">
         <mat-spinner style="margin-top: 10%;"></mat-spinner>
     </div>
-    <div style="text-align: right;margin-right: 20px;position: fixed;top: 9.0rem;">
+    <div class="filterDiv" style="position: fixed;top:9.0rem;left: 2.0rem;">
+        <form class="example-form">
+            <mat-form-field class="dropDown">
+              <input type="text"
+                     placeholder="District"
+                     matInput
+                     [formControl]="myControl"
+                     [matAutocomplete]="auto"
+                     name="districtFilter" 
+                     (keyup)="applyFilter($event.value)">
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="applyFilter($event.value)">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>          
+            <mat-form-field appearance="legacy" class="dropDown">
+                <mat-label>Hospital Type</mat-label>
+                <mat-select [(ngModel)]="filterByHospitalTypeDropDown" name="hospitalTypeFilter"
+                    (selectionChange)="applyFilter($event.value)">
+                    <mat-option value=" ">Both</mat-option>
+                    <mat-option [value]="true">Private</mat-option>
+                    <mat-option [value]="false">Govt.</mat-option>
+                </mat-select>
+            </mat-form-field>
+            &nbsp;
+            <button mat-raised-button color="primary" (click)="resetFilters()"
+                style="background-color: #746f7b;border-radius: 20px;">Reset</button>
+        </form>
+        <!-- <mat-form-field appearance="legacy" class="dropDown">
+            <mat-label>District</mat-label>
+            <mat-select [(ngModel)]="filterByDistrictDropDown" name="districtFilter" (selectionChange)="applyFilter($event.value)">
+                <mat-option value=" "></mat-option>
+                <mat-option *ngFor="let ele of districtList" [value]="ele">{{ele}}</mat-option>
+            </mat-select>
+        </mat-form-field> -->
+
+    </div>
+    <div style="text-align: right;margin-right: 20px;position: fixed;top: 12.0rem;">
         <span>
             <span class="iconify" data-icon="vaadin:exclamation" data-inline="false" data-width="20"
                 data-height="20"></span>Click on rows to view more details
@@ -22,12 +60,6 @@
         <mat-card *ngIf="dataSource?.filteredData" class="table-card">
             <div class="mat-elevation-z8">
                 <table mat-table [dataSource]="dataSource" multiTemplateDataRows id="matTable">
-
-                    <!-- Sl No Column
-                    <ng-container matColumnDef="id">
-                        <th mat-header-cell *matHeaderCellDef> SL.No. </th>
-                        <td mat-cell *matCellDef="let element"> {{dataSource.filteredData.indexOf(element)+1}} </td>
-                    </ng-container> -->
 
                     <!-- NAME Column -->
                     <ng-container matColumnDef="name">
@@ -58,8 +90,8 @@
                     <ng-container matColumnDef="isPrivate">
                         <th mat-header-cell *matHeaderCellDef></th>
                         <td mat-cell *matCellDef="let row">
-                            <mat-chip style="width: 50px;" *ngIf="row.isPrivate===true">Private</mat-chip>
-                            <mat-chip *ngIf="row.isPrivate===false">Govt</mat-chip>
+                            <mat-chip *ngIf="row.isPrivate===true">Pvt.</mat-chip>
+                            <mat-chip *ngIf="row.isPrivate===false">Govt.</mat-chip>
                         </td>
                     </ng-container>
 
@@ -68,29 +100,31 @@
                             <div class="element-detail"
                                 [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                                 <div class="element-description">
-                                    <div fxLayout="row wrap" fxLayout.xs="row wrap" fxLayoutGap.xs="10px" fxLayoutGap="10px">
+                                    <div fxLayout="row wrap" fxLayout.xs="row wrap" fxLayoutGap.xs="10px"
+                                        fxLayoutGap="10px">
                                         <div fxLayout.xs="row" fxLayout="row" class="detailSubDiv">
                                             <span class="iconify" data-icon="bx:bx-map" data-inline="false"
                                                 data-width="40" data-height="40"></span>
                                             <span id="addressLine">{{element.contact.addressLine}}</span>
                                         </div>
-                                        <div *ngIf="element.additionalInfo" fxLayout.xs="row" fxLayout="row" class="detailSubDiv">
-                                            <span class="iconify info_icon" data-icon="el:info-circle" data-inline="false"
-                                                data-width="24" data-height="24"></span>
+                                        <div *ngIf="element.additionalInfo" fxLayout.xs="row" fxLayout="row"
+                                            class="detailSubDiv">
+                                            <span class="iconify info_icon" data-icon="el:info-circle"
+                                                data-inline="false" data-width="24" data-height="24"></span>
                                             <span class="otherInformation">{{element.additionalInfo}}</span>
                                         </div>
                                         <div fxLayout.xs="row" fxLayout="row" class="detailSubDiv">
-                                            <span class="iconify info_icon" data-icon="bi:calendar-date" data-inline="false"
-                                                data-width="24" data-height="24"></span>
+                                            <span class="iconify info_icon" data-icon="bi:calendar-date"
+                                                data-inline="false" data-width="24" data-height="24"></span>
                                             <span class="otherInformation">Updated On
                                                 {{element.usage.lastUpdated}}</span>
                                         </div>
-                                        <div *ngIf="screenSizeLarge == true" fxLayout.xs="row" fxLayout="row" class="detailSubDiv">
-                                            <span class="iconify info_icon" data-icon="uil:hospital-symbol" data-inline="false"
-                                                data-width="24" data-height="24"></span>
-                                            <span *ngIf="element.isPrivate===true" class="otherInformation">Private</span>
-                                            <span *ngIf="element.isPrivate===false" class="otherInformation">Govt.</span>
-                                        </div>
+                                        <!-- <div *ngIf="screenSizeLarge == true" fxLayout.xs="row" fxLayout="row"
+                                            class="detailSubDiv">
+                                            <span>Total Bed Capacity</span>
+                                            &nbsp;
+                                            <span class="otherInformation">{{element.usage.totalBedCapacity}}</span>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -108,11 +142,13 @@
             </div>
             <div style="">
                 <span style="margin-right :20px">
-                    <span class="iconify" data-icon="maki:information-11" data-inline="false" data-width="20" data-height="20" style="margin-top: 5px;"></span>
+                    <span class="iconify" data-icon="maki:information-11" data-inline="false" data-width="20"
+                        data-height="20" style="margin-top: 5px;"></span>
                     Information as per wbhealth.gov.in
                 </span>
                 <span>
-                    <span class="iconify" data-icon="ion:share-social-sharp" data-inline="false" data-width="20" data-height="20"></span>
+                    <span class="iconify" data-icon="ion:share-social-sharp" data-inline="false" data-width="20"
+                        data-height="20"></span>
                     A social IT initiative
                 </span>
             </div>
@@ -120,6 +156,6 @@
 
     </div>
     <div class="footer">
-        <mat-paginator [pageSizeOptions]="[10, 20, 50, 100] " style="height: 50px;"></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[8, 25, 50, 100] " style="height: 50px;"></mat-paginator>
     </div>
 </div>

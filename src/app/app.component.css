@@ -112,7 +112,7 @@ tr.element-row:not(.expanded-row):active {
 .table-container {
   overflow: auto;
   position: fixed;
-  top: 11.30rem;
+  top: 13.6rem;
   min-width: 100%;
 }
 
@@ -133,18 +133,19 @@ tr.element-row:not(.expanded-row):active {
 
 mat-chip {
 	border-radius: 30px;
-	width: 38px;
-	height: 21px;
+	width: 35px;
+	height: 18px;
 	display: flex;
 	/* text-align: center; */
 	/* align-content: center; */
-	padding-top: 7px;
+	padding-top: 5px;
 	padding-right: 5px;
-  background-color: black !important;
-  padding-left: 12px;
+  background-color: #746f7b !important;
+  padding-left: 5px;
   color: white !important;
 }
 
+/*For Phone*/
 @media screen and (max-width: 600px) {
   .bar {
     width: 23.43em;
@@ -185,10 +186,15 @@ mat-chip {
   .detailSubDiv{
     margin-bottom: 10px;
   }
+
+  .dropDown{
+    width: 9em;
+    margin-right:20px ;
+  }
 }
 
 @media screen and (min-width: 600px) and (max-width: 768px) {
-  . {
+  .bar{
     width: 43.93em;
   }
   .searchbar {

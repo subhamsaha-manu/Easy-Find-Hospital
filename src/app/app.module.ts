@@ -17,6 +17,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 import {MatChipsModule} from '@angular/material/chips'; 
+import {MatFormFieldModule} from '@angular/material/form-field'; 
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,11 @@ import {MatChipsModule} from '@angular/material/chips';
     MatIconModule,
     FlexLayoutModule,
     MatProgressSpinnerModule,
-    MatChipsModule
+    MatChipsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
