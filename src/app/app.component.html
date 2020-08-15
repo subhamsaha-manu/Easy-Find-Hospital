@@ -82,9 +82,9 @@
                     <!-- PHONE NUMBER Column -->
                     <ng-container matColumnDef="phoneNumber">
                         <th mat-header-cell *matHeaderCellDef> PHONE NUMBER </th>
-                        <td mat-cell *matCellDef="let row" id="phoneNumberRow"> {{row.contact.phone}} </td>
-                    </ng-container>
-
+                        <td mat-cell *matCellDef="let row" id="phoneNumberRow">
+                             <a href="tel:{{row.contact.phone}}">{{row.contact.phone}}</a></td>
+                        </ng-container>
 
                     <!-- Is Private Column -->
                     <ng-container matColumnDef="isPrivate">
